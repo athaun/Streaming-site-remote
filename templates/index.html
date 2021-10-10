@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Asher's Light</title> 
+        <link rel="shortcut icon" type="image/x-icon" href="{{ favicon }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ css }}">
+    </head>
+    <body>
+
+        <form method="post" action="/" id="form">
+            <button id="switch" type="submit" value="lightSwitch" name="lightSwitch"/>
+                <img id="bulbImg" src="{{ off }}" alt="Light is off">
+            </button>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+ 
+    <script type="text/javascript">
+
+        function switchBulb (currentState) {
+            if (currentState == true) {
+                // Light is on
+                $("#bulbImg").attr("src","{{ on }}");
+                $("button#switch").css("background-color", "white");
+                console.log("The light is now on")
+            } else {
+                $("#bulbImg").attr("src","{{ off }}");
+                $("button#switch").css("background-color", "rgb(30, 30, 30)");
+                console.log("The light is now off")
+            }
+        }
+
+        let currentState = "{{ lightOn }}" == "False" ? false : true
+        switchBulb(currentState)
+        console.log("As of page load, the \"light on\" state is: " + currentState)
+
+        function getLightState () {
+            let SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
+            $.getJSON(SCRIPT_ROOT + "/_stuff", function(data) {
+                currentState = data.lightOn
+                switchBulb(currentState)
+                console.log(data)
+            });
+        }
+
+        setInterval(getLightState, 1000);
+
+        $(document).on('submit', '#form', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type:'POST',
+                url:'/',
+                data: $("#switch").val(),
+                success:function() {
+                    currentState = !currentState
+                    switchBulb(currentState)
+                }
+            })
+        });
+    </script>
+    </body>
+</html>
