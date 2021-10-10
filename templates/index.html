@@ -1,65 +1,152 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Asher's Light</title> 
-        <link rel="shortcut icon" type="image/x-icon" href="{{ favicon }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ css }}">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Remote Control App | theuicode.com</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
+        />
+        <link rel="shortcut icon" type="image/x-icon" href="{{ favicon }}" />
+        <link rel="stylesheet" type="text/css" href="{{ css }}" />
     </head>
     <body>
 
-        <form method="post" action="/" id="form">
-            <button id="switch" type="submit" value="lightSwitch" name="lightSwitch"/>
-                <img id="bulbImg" src="{{ off }}" alt="Light is off">
-            </button>
-        </form>
+        <div>
+            <div>
+                <div class="menu-grid">
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-netflix-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-hulu-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-amazon-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-youtube-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-hbo-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-disney-logo-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-spotify-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-pandora-app-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <form method="post" action="/" id="#">
+                            <button type="submit" value="#">
+                                <img src="static/images/sites/icons8-google-100.png" width="50px" />
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
 
-        <script src="https://code.jquery.com/jquery-3.5.1.js"
-          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-          crossorigin="anonymous"></script>
- 
-    <script type="text/javascript">
+            <div class="mt-5 pt-4 position-relative d-flex flex-row justify-content-center align-items-center wheel">
+                <div class="circle ok-inner position-absolute">
+                    <form method="post" action="/" id="play-btn">
+                        <button style="padding: 24px;" type="submit" value="play_pause">
+                            <img id="blayPauseImg" src="static/images/controls/icons8-pause-100.png" width="35px" />
+                        </button>
+                    </form>
+                </div>
 
-        function switchBulb (currentState) {
-            if (currentState == true) {
-                // Light is on
-                $("#bulbImg").attr("src","{{ on }}");
-                $("button#switch").css("background-color", "white");
-                console.log("The light is now on")
-            } else {
-                $("#bulbImg").attr("src","{{ off }}");
-                $("button#switch").css("background-color", "rgb(30, 30, 30)");
-                console.log("The light is now off")
+                <div class="circle ok-outer position-absolute"></div>
+                <form class="right position-absolute" method="post" action="/" id="#">
+                    <button type="submit" value="#">
+                        <i class="fas fa-caret-right position-absolute control-icon" style="transform: translate(-3px, -11px);"></i>
+                    </button>
+                </form>
+                <form class="bottom position-absolute" method="post" action="/" id="vol_dn">
+                    <button type="submit" value="vol_dn">
+                        <i class="fas fa-minus position-absolute control-icon" style="transform: translate(-10px, -10px);"></i>
+                    </button>
+                </form>
+                <form class="left position-absolute" method="post" action="/" id="#">
+                    <button type="submit" value="#">
+                        <i class="fas fa-caret-right position-absolute control-icon" style="transform: translate(-3px, -11px);"></i>
+                    </button>
+                </form>
+                <form class="top position-absolute" method="post" action="/" id="vol_up">
+                    <button type="submit" value="vol_up">
+                        <i class="fas fa-plus position-absolute control-icon" style="transform: translate(-10px, -12px);"></i>
+                    </button>
+                </form>
+            </div>
+            <br />
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            function getButtonState () {
+                let SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
+                $.getJSON(SCRIPT_ROOT + "/_pause", function(data) {
+                    if (data.playingVideo) {
+                        $("#blayPauseImg").attr("src", "static/images/controls/icons8-pause-100.png");
+                    } else {
+                        $("#blayPauseImg").attr("src", "static/images/controls/icons8-play-100.png");
+                    }
+                });
             }
-        }
+            setInterval(getButtonState, 1000);
 
-        let currentState = "{{ lightOn }}" == "False" ? false : true
-        switchBulb(currentState)
-        console.log("As of page load, the \"light on\" state is: " + currentState)
-
-        function getLightState () {
-            let SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
-            $.getJSON(SCRIPT_ROOT + "/_stuff", function(data) {
-                currentState = data.lightOn
-                switchBulb(currentState)
-                console.log(data)
+            $(document).on("submit", "form", function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/",
+                    data: $("#" + e.target.id)[0].children[0].value
+                });
             });
-        }
-
-        setInterval(getLightState, 1000);
-
-        $(document).on('submit', '#form', function(e) {
-            e.preventDefault();
-            $.ajax({
-                type:'POST',
-                url:'/',
-                data: $("#switch").val(),
-                success:function() {
-                    currentState = !currentState
-                    switchBulb(currentState)
-                }
-            })
-        });
-    </script>
+        </script>
     </body>
 </html>
