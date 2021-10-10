@@ -18,10 +18,10 @@ def index():
 
     if request.method == 'POST':
         if checkPost(request, b'play_pause'):
+            pyautogui.press(" ")
             playingVideo = (not playingVideo)
             if playingVideo:
                 print("The video is now playing")
-
             else:
                 print("The video is now paused")
 
