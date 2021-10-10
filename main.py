@@ -33,6 +33,14 @@ def index():
             print("Volume down")
             pyautogui.press("volumedown")
 
+        if checkPost(request, b'left_arrow'):
+            print("Left Arrow")
+            pyautogui.press("left")
+
+        if checkPost(request, b'right_arrow'):
+            print("Right Arrow")
+            pyautogui.press("right")
+
     return render_template("index.html", css="static/css/index.css", favicon="static/images/favicon.png")
 
 @app.route('/_pause', methods=['GET'])

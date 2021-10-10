@@ -88,6 +88,11 @@ form.top {
     position: absolute;
 }
 
+button {
+    border: none;
+    background: none;
+}
+
 button:not(.wheel *) {
     border: none;
     border-radius: 50px;
