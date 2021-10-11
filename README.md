@@ -18,3 +18,9 @@ python main.py
 
 connect the the ip address of the computer running the server from your phone
 For example, `192.168.1.10:7070`
+
+<br>
+Tested on
+* YouTube
+* Amazon Prime Video
+* Disney+
