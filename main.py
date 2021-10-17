@@ -22,11 +22,24 @@ urls = [
     [b"google",     "https://google.com"]
 ]
 
+import socket
+def getip ():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('10.255.255.255', 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
+
 def checkPost (request, data):
     return request.get_data() == data
 
 @app.route("/", methods=['POST', 'GET'])
-def index():
+def index ():
     global playingVideo
 
     if request.method == 'POST':
@@ -62,9 +75,11 @@ def index():
     return render_template("index.html", css="static/css/index.css", favicon="static/images/favicon.png")
 
 @app.route('/_pause', methods=['GET'])
-def stuff():
+def stuff ():
     return jsonify(playingVideo=playingVideo)  
 
 if __name__ == '__main__':
-    app.run(host="192.168.1.10", port=7070, debug=True)
+    print(f"\nOn your phone go to http://{getip()}\n")
+    time.sleep(2.50)
+    app.run(host=getip(), port=80, debug=True)
 
