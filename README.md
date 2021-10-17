@@ -9,15 +9,16 @@ With one tap of a button, open a streaming service from your phone, control the 
 Make sure that the IP address in main.py `app.run()` is the same as the machine you are planning on running the webserver on.
 Install the dependancies:
 ```
-pip install flask pyautogui
+pip install -r requirements.txt
 ```
 Run:
 ```
 python main.py
 ```
+or double click `runServer.bat`
 
 connect the the ip address of the computer running the server from your phone
-For example, `192.168.1.10:7070`
+For example, `http://192.168.1.10`
 
 <br>
 Tested on
