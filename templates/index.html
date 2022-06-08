@@ -12,7 +12,6 @@
             integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
             crossorigin="anonymous"
         />
-        <link rel="shortcut icon" type="image/x-icon" href="{{ favicon }}" />
         <link rel="stylesheet" type="text/css" href="{{ css }}" />
     </head>
     <body>
@@ -125,8 +124,13 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
 
         <script type="text/javascript">
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+
+
             function getButtonState () {
                 let SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
                 $.getJSON(SCRIPT_ROOT + "/_pause", function(data) {
@@ -137,15 +141,28 @@
                     }
                 });
             }
-            setInterval(getButtonState, 1000);
+
+            // setInterval(getButtonState, 1000);
 
             $(document).on("submit", "form", function (e) {
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "/",
-                    data: $("#" + e.target.id)[0].children[0].value
-                });
+                e.preventDefault();               
+                
+                messageData = {
+                    "data" : $("#" + e.target.id)[0].children[0].value
+                }
+
+                socket.send(messageData)
+                return
+            });
+
+
+            socket.on('connect', function() {
+                console.log('Socket connected');
+            });
+
+            socket.on('message', function(data) {
+                console.log(data);
+                getButtonState();
             });
         </script>
     </body>
