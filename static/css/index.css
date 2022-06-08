@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 0px;
     justify-content: space-evenly;
+    background: rgba(25, 25, 25, 100);
 }
 
 div.menu-grid {
@@ -51,11 +52,12 @@ i.home-icon {
 
 i.control-icon {
     font-size: 24px;
-    color: #2e2e2e;
+    color: lightgray;
 }
 
 div.circle {
-    border: 1px solid lightgray;
+    border: 1px solid rgba(60, 60, 60, 100);
+    background-color: rgba(35, 35, 35, 100);
     border-radius: 50%;
 }
 
@@ -97,7 +99,7 @@ button:not(.wheel *) {
     border: none;
     border-radius: 50px;
     padding: 10px;
-    background: rgb(235, 235, 235);
+    background: rgba(45, 45, 45, 100);
     transition: all 0.2s;
 }
 
@@ -111,6 +113,6 @@ button:not(.wheel *) {
 }
 
 .wheel button:active, button:not(.wheel *):active {
-    background: lightgray;
+    background: rgba(20, 20, 20, 100);
     transition: all 0.2s;
 }
