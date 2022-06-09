@@ -5,8 +5,13 @@ With one tap of a button, open a streaming service from your phone, control the 
 
 ![](static/images/phone.png)
 
+## PyInstaller (to build an executable)
+```
+pyinstaller --noconfirm --onefile --console --add-data "/Users/asher/Documents/code/Streaming-site-remote/static:static/" --add-data "/Users/asher/Documents/code/Streaming-site-remote/templates:templates/"  "/Users/asher/Documents/code/Streaming-site-remote/main.py"
+```
+
 ## Running for yourself
-Make sure that the IP address in main.py `app.run()` is the same as the machine you are planning on running the webserver on.
+
 Install the dependancies:
 ```
 pip install -r requirements.txt
