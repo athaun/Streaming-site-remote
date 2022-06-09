@@ -113,6 +113,6 @@ button:not(.wheel *) {
 }
 
 .wheel button:active, button:not(.wheel *):active {
-    background: rgba(20, 20, 20, 100);
+    background: rgba(20, 20, 2  0, 100);
     transition: all 0.2s;
 }

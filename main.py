@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit  
+from engineio.async_drivers import gevent
 from flask import jsonify
 import pyautogui
 import webbrowser
@@ -112,5 +113,5 @@ def stuff ():
 
 if __name__ == '__main__':
     print(f"\nOn your phone go to http://{getip()}:8080\n")
-    socketio.run(app, host = "0.0.0.0", port = 8080, debug = True)
+    socketio.run(app, host = "0.0.0.0", port = 8080) # , debug = True
 
